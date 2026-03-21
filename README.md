@@ -1,1 +1,1 @@
-# zqf-demo
+# zero-quantum-frequency
