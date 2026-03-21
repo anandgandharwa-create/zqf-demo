@@ -1,4 +1,4 @@
-const CACHE_NAME = "zqf-v1.1";  // <-- हर update पर सिर्फ यही बदलना
+const CACHE_NAME = "zqf-v1.2";  // <-- हर update पर सिर्फ यही बदलना
 
 const urlsToCache = [
   "/zero-quantum-frequency/",
