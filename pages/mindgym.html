@@ -187,7 +187,7 @@ color:#7CFF9E;
 🚧 Premium Coming Soon
 </div>
 <script>
-
+let breathingInterval;
 // Load data
 let streak = localStorage.getItem("streak") || 0;
 let xp = localStorage.getItem("xp") || 0;
@@ -199,10 +199,12 @@ document.getElementById("xp").innerText = xp;
 // Complete exercise
 function completeExercise(){
 
-startBreathing(); // पहले breathing शुरू
+startBreathing();
 
-// 👇 30 सेकंड बाद result दिखे
+// 👇 30 सेकंड बाद सब stop + result
 setTimeout(()=>{
+
+stopBreathing(); // 👈 breathing बंद
 
 xp++;
 streak++;
@@ -216,7 +218,7 @@ document.getElementById("streak").innerText = streak;
 document.getElementById("result").innerText =
 "🔥 Great! आपने आज का अभ्यास पूरा किया";
 
-},30000); // 30 सेकंड
+},30000);
 }
 
 // Check premium
@@ -237,9 +239,6 @@ location.reload();
 let breathing = false;
 
 function startBreathing(){
-if(breathing) return;
-
-breathing = true;
 
 let circle = document.getElementById("circle");
 let text = document.getElementById("breathText");
@@ -255,7 +254,22 @@ circle.classList.remove("grow");
 }
 
 breathe();
+breathingInterval = setInterval(breathe,8000);
+}
+
+breathe();
 setInterval(breathe,8000);
+}
+  function stopBreathing(){
+
+clearInterval(breathingInterval);
+
+let circle = document.getElementById("circle");
+let text = document.getElementById("breathText");
+
+// reset state
+circle.classList.remove("grow");
+text.innerText = "पूर्ण";
 }
 </script>
 
