@@ -141,6 +141,28 @@ margin-top:12px;
 font-size:16px;
 color:#7CFF9E;
 }
+  .progressRing{
+position:absolute;
+top:0;
+left:0;
+}
+
+.progressRing circle{
+fill:none;
+stroke-width:6;
+}
+
+.progressRing .bg{
+stroke:#123;
+}
+
+.progressRing .progress{
+stroke:#00ffd5;
+stroke-linecap:round;
+transform:rotate(-90deg);
+transform-origin:50% 50%;
+transition:stroke-dashoffset 1s linear;
+}
 </style>
 </head>
 
@@ -166,8 +188,15 @@ color:#7CFF9E;
 <div id="result" class="result"></div>
 </div>
 <div class="breathingBox">
-  <div class="circle" id="circle"></div>
-  <div class="breathText" id="breathText">श्वास लें</div>
+
+<svg class="progressRing" width="140" height="140">
+  <circle cx="70" cy="70" r="60" class="bg"></circle>
+  <circle cx="70" cy="70" r="60" class="progress" id="progressCircle"></circle>
+</svg>
+
+<div class="circle" id="circle"></div>
+<div class="breathText" id="breathText">श्वास लें</div>
+
 </div>
 <!-- LOCKED -->
 <div class="card locked">
@@ -257,9 +286,7 @@ breathe();
 breathingInterval = setInterval(breathe,8000);
 }
 
-breathe();
-setInterval(breathe,8000);
-}
+
   function stopBreathing(){
 
 clearInterval(breathingInterval);
@@ -270,6 +297,33 @@ let text = document.getElementById("breathText");
 // reset state
 circle.classList.remove("grow");
 text.innerText = "पूर्ण";
+}
+  let progressInterval;
+
+function startProgress(){
+
+let circle = document.getElementById("progressCircle");
+
+let radius = 60;
+let circumference = 2 * Math.PI * radius;
+
+circle.style.strokeDasharray = circumference;
+circle.style.strokeDashoffset = circumference;
+
+let time = 30;
+let current = 0;
+
+progressInterval = setInterval(()=>{
+
+current++;
+let offset = circumference - (current / time) * circumference;
+circle.style.strokeDashoffset = offset;
+
+if(current >= time){
+clearInterval(progressInterval);
+}
+
+},1000);
 }
 </script>
 
