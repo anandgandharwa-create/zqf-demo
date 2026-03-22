@@ -141,10 +141,11 @@ margin-top:12px;
 font-size:16px;
 color:#7CFF9E;
 }
-  .progressRing{
+ .progressRing{
 position:absolute;
-top:0;
-left:0;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
 }
 
 .progressRing circle{
@@ -287,20 +288,20 @@ breathingInterval = setInterval(breathe,8000);
 }
 
 
-  function stopBreathing(){
+function stopBreathing(){
 
 clearInterval(breathingInterval);
-
-let circle = document.getElementById("circle");
-let text = document.getElementById("breathText");
 clearInterval(progressInterval);
 
-// reset progress
-let circle = document.getElementById("progressCircle");
+
+let text = document.getElementById("breathText");
+let progressCircle = document.getElementById("progressCircle");
+
 let radius = 60;
 let circumference = 2 * Math.PI * radius;
-circle.style.strokeDashoffset = circumference;
-// reset state
+progressCircle.style.strokeDashoffset = circumference;
+
+// reset
 circle.classList.remove("grow");
 text.innerText = "पूर्ण";
 }
@@ -330,6 +331,28 @@ clearInterval(progressInterval);
 }
 
 },1000);
+}
+  function completeExercise(){
+
+startBreathing();
+startProgress(); // 👈 ये missing था
+
+setTimeout(()=>{
+stopBreathing();
+
+xp++;
+streak++;
+
+localStorage.setItem("xp", xp);
+localStorage.setItem("streak", streak);
+
+document.getElementById("xp").innerText = xp;
+document.getElementById("streak").innerText = streak;
+
+document.getElementById("result").innerText =
+"🔥 Great! आपने आज का अभ्यास पूरा किया";
+
+},30000);
 }
 </script>
 
