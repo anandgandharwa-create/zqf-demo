@@ -185,7 +185,7 @@ svg{
   </svg>
 </div>
 
-<div class="meter-text" id="meterText"></div>
+
 <div class="meter-text" id="meterText"></div>
 <button onclick="goSpin()">Next → Spin</button>
 </div>
@@ -215,7 +215,7 @@ svg{
 <script>
 let lang="hi",score=0,zone="",spun=false;
 
-/* ✅ WORD-BY-WORD typing (Hindi-safe) */
+/* ✅ WORD-BY-WORD typing */
 function typeByWords(text, el, callback, speed=140){
   el.innerText="";
   const words=text.split(" ");
@@ -241,6 +241,7 @@ const questionBank=[
 
 let activeQs=[];
 
+/* START TEST */
 function startTest(){
   landing.classList.remove("active");
   page1.classList.add("active");
@@ -248,6 +249,7 @@ function startTest(){
   renderQuestions();
 }
 
+/* RENDER QUESTIONS */
 function renderQuestions(){
   let h="";
   activeQs.forEach((q,i)=>{
@@ -260,37 +262,64 @@ function renderQuestions(){
   questions.innerHTML=h;
 }
 
-const needle = document.getElementById("needle");
+/* ✅ METER FUNCTION (MAIN FIX) */
+function goMeter(){
+  score=0;
 
-let angle = 0;
+  for(let i=0;i<5;i++){
+    const a=document.querySelector(`input[name="q${i}"]:checked`);
+    if(!a){alert("सभी प्रश्नों के उत्तर दें");return;}
+    score+=parseInt(a.value);
+  }
 
-if(p > 70){
-  zone = "red";
-  angle = -60;
-  meterText.innerText = "High Mental Pollution";
+  page1.classList.remove("active");
+  page2.classList.add("active");
+
+  const p=Math.round((score/15)*100);
+
+  const needle = document.getElementById("needle");
+  let angle = 0;
+
+  if(p > 70){
+    zone = "red";
+    angle = -60;
+    meterText.innerText = "High Mental Pollution";
+  }
+  else if(p > 40){
+    zone = "yellow";
+    angle = 0;
+    meterText.innerText = "Moderate Mental Pollution";
+  }
+  else{
+    zone = "green";
+    angle = 60;
+    meterText.innerText = "Low Mental Pollution";
+  }
+
+  needle.style.transform = `rotate(${angle}deg)`;
 }
-else if(p > 40){
-  zone = "yellow";
-  angle = 0;
-  meterText.innerText = "Moderate Mental Pollution";
-}
-else{
-  zone = "green";
-  angle = 60;
-  meterText.innerText = "Low Mental Pollution";
+
+/* NEXT PAGE */
+function goSpin(){
+  page2.classList.remove("active");
+  page3.classList.add("active");
 }
 
-needle.style.transform = `rotate(${angle}deg)`;
-function goSpin(){page2.classList.remove("active");page3.classList.add("active");}
-
+/* SPIN */
 function spinNow(){
   if(spun)return;
   spun=true;
+
   wheel.classList.add("glow");
-  wheel.style.transform="rotate("+(zone==="red"?1470:zone==="yellow"?1590:1710)+"deg)";
+
+  wheel.style.transform="rotate("+
+    (zone==="red"?1470:zone==="yellow"?1590:1710)
+  +"deg)";
+
   setTimeout(showDecision,4000);
 }
 
+/* RESULT */
 function showDecision(){
   page3.classList.remove("active");
   page4.classList.add("active");
@@ -312,7 +341,7 @@ function showDecision(){
     hi:{
       red:"🧘 3 मिनट तक केवल श्वास पर ध्यान दें।",
       yellow:"🧘 5 गहरी साँस लें और शरीर को ढीला छोड़ दें।",
-      green:"🧘 शांत बैठकर कृतज्ञता अनुभव करें।"
+      green:"🧘 शांत बैठकर कृतज्ञता अनुभव करें। नाभि  तक गहरी सांस लें।"
     },
     en:{
       red:"🧘 Focus on your breath for 3 minutes.",
@@ -332,17 +361,24 @@ function showDecision(){
   });
 }
 
+/* LANGUAGE TOGGLE */
 function toggleLang(){
   lang=lang==="hi"?"en":"hi";
+
   landingTitle.innerText=lang==="hi"?"🧠 आज का मन":"🧠 Today's Mind";
+
   landingText.innerText=lang==="hi"
     ?"यह एक free daily mind check है जो बताता है कि अभी निर्णय लेना उचित है या नहीं।"
     :"This is a free daily mind check to know if it’s the right time to decide.";
+
   startBtn.innerText=lang==="hi"?"आज का टेस्ट करें":"Start Test";
   qTitle.innerText=lang==="hi"?"🌪 मानसिक प्रदूषण सूचकांक":"🌪 Mental Pollution Index";
   meterBtn.innerText=lang==="hi"?"मीटर देखें":"Check Meter";
+
   if(page1.classList.contains("active")) renderQuestions();
 }
+
+/* HOME */
 function goHomeZQF(){
   window.location.href = "../index.html";
 }
