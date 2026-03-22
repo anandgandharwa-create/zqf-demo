@@ -1038,6 +1038,16 @@ transform:translateY(-5px);
 box-shadow:
 0 0 30px rgba(255,215,0,0.6);
 }
+ .premiumBox{
+margin-top:15px;
+padding:12px;
+border-radius:12px;
+background:linear-gradient(135deg,#f5d06f,#caa84c);
+color:#000;
+font-weight:bold;
+cursor:pointer;
+text-align:center;
+}
 </style>
 </head>
 
@@ -1095,7 +1105,9 @@ Return to your original state
 <!-- DAILY KRISHNA MESSAGE -->
 
 <div class="dailyCard">
-
+<div class="premiumBox" onclick="goPremium()">
+  🔒 Premium Unlock – ₹99/month
+</div>
 <div class="dailyTitle">🕉 Krishna Today Says</div>
 
 <div class="dailyText">
@@ -1622,6 +1634,9 @@ if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('service-worker.js').then(reg => {
     reg.update(); // हर बार update check
   });
+}
+  function goPremium(){
+   window.location.href = "pages/premium.html";
 }
 </script>
 </body>
