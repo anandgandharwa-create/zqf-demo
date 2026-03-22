@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="hi">
 <head>
@@ -16,7 +17,7 @@ text-align:center;
 
 /* Header */
 header{
-position:relative;   /* 👈 ADD THIS */
+position:relative;
 background:linear-gradient(90deg,#5b2c83,#402060);
 padding:16px;
 font-size:20px;
@@ -87,39 +88,38 @@ color:#7CFF9E;
 /* Back */
 .backArrow{
 position:absolute;
-left:10px;     /* 👈 corner distance */
+left:10px;
 top:50%;
 transform:translateY(-50%);
 font-size:22px;
 cursor:pointer;
 color:#fff;
-
-background:rgba(255,255,255,0.1);   /* optional premium look */
+background:rgba(255,255,255,0.1);
 padding:6px 10px;
 border-radius:10px;
-}
-  .backArrow{
 z-index:9999;
-cursor:pointer;
 }
-  .disabledBtn{
+
+.disabledBtn{
 opacity:0.5;
 cursor:not-allowed;
 background:linear-gradient(45deg,#999,#666);
 color:#ddd;
 box-shadow:none;
 }
- .breathingBox{
+
+/* Breathing Box */
+.breathingBox{
 margin-top:20px;
-margin-bottom:30px;   /* 👈 space add */
+margin-bottom:30px;
 display:flex;
-flex-direction:column;
 align-items:center;
 justify-content:center;
 position:relative;
-z-index:1;
+height:160px; /* FIX */
 }
 
+/* Circle */
 .circle{
 width:100px;
 height:100px;
@@ -128,20 +128,26 @@ background:radial-gradient(circle,#00ffd5,#007a6d);
 box-shadow:0 0 25px #00ffd5;
 transition:all 4s ease-in-out;
 
-/* 👇 IMPORTANT FIX */
-margin-bottom:10px;
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
 }
 
 .circle.grow{
-transform:scale(1.5);
+transform:translate(-50%,-50%) scale(1.5);
 }
 
+/* Text */
 .breathText{
-margin-top:12px;
+position:absolute;
+bottom:-25px;
 font-size:16px;
 color:#7CFF9E;
 }
- .progressRing{
+
+/* Progress Ring */
+.progressRing{
 position:absolute;
 top:50%;
 left:50%;
@@ -176,30 +182,29 @@ transition:stroke-dashoffset 1s linear;
 
 <div class="container">
 
-<!-- STATS -->
 <div class="stats">
 <div>🔥 Streak: <span id="streak">0</span></div>
 <div>⭐ XP: <span id="xp">0</span></div>
 </div>
 
-<!-- FREE EXERCISE -->
 <div class="card" onclick="completeExercise()">
 <h3>🎯 Focus Drill</h3>
 <p>30 सेकंड सांस पर ध्यान दें</p>
 <div id="result" class="result"></div>
 </div>
+
 <div class="breathingBox">
 
-<svg class="progressRing" width="140" height="140">
-  <circle cx="70" cy="70" r="60" class="bg"></circle>
-  <circle cx="70" cy="70" r="60" class="progress" id="progressCircle"></circle>
+<svg class="progressRing" width="120" height="120">
+  <circle cx="60" cy="60" r="50" class="bg"></circle>
+  <circle cx="60" cy="60" r="50" class="progress" id="progressCircle"></circle>
 </svg>
 
 <div class="circle" id="circle"></div>
 <div class="breathText" id="breathText">श्वास लें</div>
 
 </div>
-<!-- LOCKED -->
+
 <div class="card locked">
 <div class="lockLabel">🔒 Premium</div>
 <h3>🔁 Thought Shift</h3>
@@ -212,29 +217,27 @@ transition:stroke-dashoffset 1s linear;
 <p>साक्षी भाव अभ्यास</p>
 </div>
 
-<!-- PREMIUM BUTTON -->
 <div class="premiumBtn disabledBtn">
 🚧 Premium Coming Soon
 </div>
+
 <script>
 let breathingInterval;
-// Load data
+let progressInterval;
+
 let streak = localStorage.getItem("streak") || 0;
 let xp = localStorage.getItem("xp") || 0;
-let premium = localStorage.getItem("premium") || false;
 
 document.getElementById("streak").innerText = streak;
 document.getElementById("xp").innerText = xp;
 
-// Complete exercise
 function completeExercise(){
 
 startBreathing();
+startProgress();
 
-// 👇 30 सेकंड बाद सब stop + result
 setTimeout(()=>{
-
-stopBreathing(); // 👈 breathing बंद
+stopBreathing();
 
 xp++;
 streak++;
@@ -250,23 +253,6 @@ document.getElementById("result").innerText =
 
 },30000);
 }
-
-// Check premium
-function checkPremium(){
-if(premium === "true"){
-alert("Exercise unlocked!");
-}else{
-alert("🔒 यह Premium है");
-}
-}
-
-// Buy premium (demo)
-function buyPremium(){
-localStorage.setItem("premium", "true");
-alert("🎉 Premium Activated!");
-location.reload();
-}
-let breathing = false;
 
 function startBreathing(){
 
@@ -287,31 +273,29 @@ breathe();
 breathingInterval = setInterval(breathe,8000);
 }
 
-
 function stopBreathing(){
 
 clearInterval(breathingInterval);
 clearInterval(progressInterval);
 
-
 let text = document.getElementById("breathText");
 let progressCircle = document.getElementById("progressCircle");
+let circle = document.getElementById("circle");
 
-let radius = 60;
+let radius = 50;
 let circumference = 2 * Math.PI * radius;
+
 progressCircle.style.strokeDashoffset = circumference;
 
-// reset
 circle.classList.remove("grow");
 text.innerText = "पूर्ण";
 }
-  let progressInterval;
 
 function startProgress(){
 
 let circle = document.getElementById("progressCircle");
 
-let radius = 60;
+let radius = 50;
 let circumference = 2 * Math.PI * radius;
 
 circle.style.strokeDasharray = circumference;
@@ -332,29 +316,8 @@ clearInterval(progressInterval);
 
 },1000);
 }
-  function completeExercise(){
-
-startBreathing();
-startProgress(); // 👈 ये missing था
-
-setTimeout(()=>{
-stopBreathing();
-
-xp++;
-streak++;
-
-localStorage.setItem("xp", xp);
-localStorage.setItem("streak", streak);
-
-document.getElementById("xp").innerText = xp;
-document.getElementById("streak").innerText = streak;
-
-document.getElementById("result").innerText =
-"🔥 Great! आपने आज का अभ्यास पूरा किया";
-
-},30000);
-}
 </script>
 
 </body>
 </html>
+```
