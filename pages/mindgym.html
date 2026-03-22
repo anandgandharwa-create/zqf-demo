@@ -49,6 +49,7 @@ padding:20px;
 margin-bottom:16px;
 cursor:pointer;
 position:relative;
+overflow:hidden; 
 }
 
 .locked{
@@ -108,12 +109,15 @@ background:linear-gradient(45deg,#999,#666);
 color:#ddd;
 box-shadow:none;
 }
-  .breathingBox{
+ .breathingBox{
 margin-top:20px;
+margin-bottom:30px;   /* 👈 space add */
 display:flex;
 flex-direction:column;
 align-items:center;
 justify-content:center;
+position:relative;
+z-index:1;
 }
 
 .circle{
@@ -123,6 +127,9 @@ border-radius:50%;
 background:radial-gradient(circle,#00ffd5,#007a6d);
 box-shadow:0 0 25px #00ffd5;
 transition:all 4s ease-in-out;
+
+/* 👇 IMPORTANT FIX */
+margin-bottom:10px;
 }
 
 .circle.grow{
@@ -192,7 +199,10 @@ document.getElementById("xp").innerText = xp;
 // Complete exercise
 function completeExercise(){
 
-startBreathing(); // 👈 ये लाइन जोड़ें
+startBreathing(); // पहले breathing शुरू
+
+// 👇 30 सेकंड बाद result दिखे
+setTimeout(()=>{
 
 xp++;
 streak++;
@@ -205,6 +215,8 @@ document.getElementById("streak").innerText = streak;
 
 document.getElementById("result").innerText =
 "🔥 Great! आपने आज का अभ्यास पूरा किया";
+
+},30000); // 30 सेकंड
 }
 
 // Check premium
