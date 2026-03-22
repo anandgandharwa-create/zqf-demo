@@ -268,10 +268,10 @@ function goMeter(){
 
   for(let i=0;i<5;i++){
     const a=document.querySelector(`input[name="q${i}"]:checked`);
-   if(!a){
-  alert("कृपया सभी 5 सवालों के जवाब दें");
-  return;
-}
+    if(!a){
+      alert("कृपया सभी 5 सवालों के जवाब दें");
+      return;
+    }
     score+=parseInt(a.value);
   }
 
@@ -281,6 +281,8 @@ function goMeter(){
   const p=Math.round((score/15)*100);
 
   const needle = document.getElementById("needle");
+  const meterText = document.getElementById("meterText"); // ✅ ADD THIS
+
   let angle = 0;
 
   if(p > 70){
@@ -301,7 +303,6 @@ function goMeter(){
 
   needle.style.transform = `rotate(${angle}deg)`;
 }
-
 /* NEXT PAGE */
 function goSpin(){
   page2.classList.remove("active");
