@@ -293,7 +293,13 @@ clearInterval(breathingInterval);
 
 let circle = document.getElementById("circle");
 let text = document.getElementById("breathText");
+clearInterval(progressInterval);
 
+// reset progress
+let circle = document.getElementById("progressCircle");
+let radius = 60;
+let circumference = 2 * Math.PI * radius;
+circle.style.strokeDashoffset = circumference;
 // reset state
 circle.classList.remove("grow");
 text.innerText = "पूर्ण";
