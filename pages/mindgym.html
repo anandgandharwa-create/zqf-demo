@@ -108,6 +108,32 @@ background:linear-gradient(45deg,#999,#666);
 color:#ddd;
 box-shadow:none;
 }
+  .breathingBox{
+margin-top:20px;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+}
+
+.circle{
+width:100px;
+height:100px;
+border-radius:50%;
+background:radial-gradient(circle,#00ffd5,#007a6d);
+box-shadow:0 0 25px #00ffd5;
+transition:all 4s ease-in-out;
+}
+
+.circle.grow{
+transform:scale(1.5);
+}
+
+.breathText{
+margin-top:12px;
+font-size:16px;
+color:#7CFF9E;
+}
 </style>
 </head>
 
@@ -132,7 +158,10 @@ box-shadow:none;
 <p>30 सेकंड सांस पर ध्यान दें</p>
 <div id="result" class="result"></div>
 </div>
-
+<div class="breathingBox">
+  <div class="circle" id="circle"></div>
+  <div class="breathText" id="breathText">श्वास लें</div>
+</div>
 <!-- LOCKED -->
 <div class="card locked">
 <div class="lockLabel">🔒 Premium</div>
@@ -162,6 +191,9 @@ document.getElementById("xp").innerText = xp;
 
 // Complete exercise
 function completeExercise(){
+
+startBreathing(); // 👈 ये लाइन जोड़ें
+
 xp++;
 streak++;
 
@@ -190,7 +222,29 @@ localStorage.setItem("premium", "true");
 alert("🎉 Premium Activated!");
 location.reload();
 }
+let breathing = false;
 
+function startBreathing(){
+if(breathing) return;
+
+breathing = true;
+
+let circle = document.getElementById("circle");
+let text = document.getElementById("breathText");
+
+function breathe(){
+text.innerText = "श्वास लें";
+circle.classList.add("grow");
+
+setTimeout(()=>{
+text.innerText = "श्वास छोड़ें";
+circle.classList.remove("grow");
+},4000);
+}
+
+breathe();
+setInterval(breathe,8000);
+}
 </script>
 
 </body>
