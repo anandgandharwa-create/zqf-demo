@@ -113,9 +113,8 @@ svg{
 
 #needle{
   transform-box: fill-box;              /* SVG fix */
-  transform-origin: 50% 100%;           /* bottom center pivot */
-  
-  transition: transform 1.2s cubic-bezier(.25,1.5,.5,1); /* smooth + slight bounce */
+ transform-origin: 100px 100px;   /* 🔥 EXACT CENTER FIX */
+  transition: transform 1.2s ease;
   
   stroke: #ffffff;                     /* needle color */
   stroke-width: 4;
@@ -305,7 +304,11 @@ function goMeter(){
 
   needle.style.transform = `rotate(${angle}deg)`;
 }
-/* NEXT PAGE */
+  setTimeout(()=>{
+  needle.style.transform = `rotate(${angle}deg)`;
+},100);
+
+  /* NEXT PAGE */
 function goSpin(){
   page2.classList.remove("active");
   page3.classList.add("active");
