@@ -113,7 +113,7 @@ svg{
 
 #needle{
   transform-box: fill-box;   /* 🔥 यही missing है */
-  transform-origin: 100px 100px;
+ transform-origin: 100px 100px;
   transition: transform 1.5s cubic-bezier(.25,1.5,.5,1);
 }
 </style>
@@ -282,7 +282,7 @@ function goMeter(){
 
 if(p > 70){
   zone = "red";
-  angle = -90;
+  angle = -60;
 }
 else if(p > 40){
   zone = "yellow";
@@ -290,7 +290,7 @@ else if(p > 40){
 }
 else{
   zone = "green";
-  angle = 90;
+  angle = 60;
 }
 // पहले needle को 0 पर reset करो
 needle.style.transform = "rotate(0deg)";
