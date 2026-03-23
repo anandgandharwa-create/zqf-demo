@@ -112,8 +112,8 @@ svg{
 }
 
 #needle{
-  transform-box: fill-box;   /* 🔥 यही missing है */
- transform-origin: 100px 100px;
+  transform-box: fill-box;
+  transform-origin: center bottom;   /* 🔥 यही सही pivot है */
   transition: transform 1.5s cubic-bezier(.25,1.5,.5,1);
 }
 </style>
@@ -278,24 +278,22 @@ function goMeter(){
   const needle = document.getElementById("needle");
   const meterText = document.getElementById("meterText"); // ✅ ADD THIS
 
-  let angle = 0;
+ let angle = -60 + (p * 120 / 100);  // ✅ smooth full range
 
 if(p > 70){
   zone = "red";
-  angle = -60;
 }
 else if(p > 40){
   zone = "yellow";
-  angle = 0;
 }
 else{
   zone = "green";
-  angle = 60;
 }
 // पहले needle को 0 पर reset करो
 needle.style.transform = "rotate(0deg)";
 
-// फिर थोड़ी देर बाद rotate करो
+needle.style.transform = "rotate(0deg)";
+
 setTimeout(()=>{
   needle.style.transform = `rotate(${angle}deg)`;
 },300);
