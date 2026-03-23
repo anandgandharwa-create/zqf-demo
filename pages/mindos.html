@@ -112,7 +112,8 @@ svg{
 }
 
 #needle{
-  transform-origin: 100px 100px;
+  transform-box: fill-box;   /* 🔥 यही missing है */
+  transform-origin: center bottom;
   transition: transform 1s ease;
 }
 </style>
