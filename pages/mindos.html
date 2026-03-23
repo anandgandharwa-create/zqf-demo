@@ -278,7 +278,7 @@ function goMeter(){
   const needle = document.getElementById("needle");
   const meterText = document.getElementById("meterText"); // ✅ ADD THIS
 
-let angle = 70 - (p * 140 / 100);
+let angle = (p * 1.8) - 90;
 
 if(p > 70){
   zone = "red";
@@ -289,14 +289,15 @@ else if(p > 40){
 else{
   zone = "green";
 }
-// पहले needle को 0 पर reset करो
-needle.style.transform = "rotate(0deg)";
 
-needle.style.transform = "rotate(0deg)";
+// 🔥 reset + animate
+needle.style.transition = "none";
+needle.style.transform = "rotate(-90deg)";  // start from left
 
 setTimeout(()=>{
+  needle.style.transition = "transform 1.5s cubic-bezier(.25,1.5,.5,1)";
   needle.style.transform = `rotate(${angle}deg)`;
-},300);
+},100);
 }
 /* NEXT PAGE */
 function goSpin(){
