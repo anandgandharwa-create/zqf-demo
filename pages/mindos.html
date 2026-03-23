@@ -112,15 +112,8 @@ svg{
 }
 
 #needle{
-  transform-box: fill-box;              /* SVG fix */
- transform-origin: 100px 100px;   /* 🔥 EXACT CENTER FIX */
-  transition: transform 1.2s ease;
-  
-  stroke: #ffffff;                     /* needle color */
-  stroke-width: 4;
-  stroke-linecap: round;
-
-  filter: drop-shadow(0 0 6px rgba(255,255,255,0.6)); /* glow effect */
+  transform-origin: 100px 100px;
+  transition: transform 1s ease;
 }
 </style>
 </head>
@@ -286,29 +279,22 @@ function goMeter(){
 
   let angle = 0;
 
-  if(p > 70){
-    zone = "red";
-    angle = -60;
-    meterText.innerText = "High Mental Pollution";
-  }
-  else if(p > 40){
-    zone = "yellow";
-    angle = 0;
-    meterText.innerText = "Moderate Mental Pollution";
-  }
-  else{
-    zone = "green";
-    angle = 60;
-    meterText.innerText = "Low Mental Pollution";
-  }
-
+if(p > 70){
+  zone = "red";
+  angle = -90;
+}
+else if(p > 40){
+  zone = "yellow";
+  angle = 0;
+}
+else{
+  zone = "green";
+  angle = 90;
+}
   needle.style.transform = `rotate(${angle}deg)`;
 }
-  setTimeout(()=>{
-  needle.style.transform = `rotate(${angle}deg)`;
-},100);
 
-  /* NEXT PAGE */
+/* NEXT PAGE */
 function goSpin(){
   page2.classList.remove("active");
   page3.classList.add("active");
