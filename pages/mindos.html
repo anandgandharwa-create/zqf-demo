@@ -278,20 +278,23 @@ function goMeter(){
   const needle = document.getElementById("needle");
   const meterText = document.getElementById("meterText"); // ✅ ADD THIS
 
-let angle = 65 - (p * 130 / 100);
+let angle = 0;
 
 if(p > 70){
   zone = "red";
+  angle = -60;
 }
 else if(p > 40){
   zone = "yellow";
+  angle = 0;
 }
 else{
   zone = "green";
+  angle = 60;
 }
 
 needle.style.transition = "none";
-needle.style.transform = "rotate(-65deg)";
+needle.style.transform = "rotate(-60deg)";
 
 setTimeout(()=>{
   needle.style.transition = "transform 1.5s cubic-bezier(.25,1.5,.5,1)";
