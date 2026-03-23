@@ -278,7 +278,7 @@ function goMeter(){
   const needle = document.getElementById("needle");
   const meterText = document.getElementById("meterText"); // ✅ ADD THIS
 
- let angle = -60 + (p * 120 / 100);  // ✅ smooth full range
+let angle = 70 - (p * 140 / 100);
 
 if(p > 70){
   zone = "red";
