@@ -1646,18 +1646,14 @@ if ('serviceWorker' in navigator) {
     reg.update(); // हर बार update check
   });
 }
-  function goPremium(){
-   window.location.href = "pages/premium.html";
-}
+
   <script>
 function goPremium(){
 
-// अगर already premium है → tools page खोलो
 if(localStorage.getItem("premium") === "yes"){
-    window.location.href = "pages/premium/tools.html";
+    window.location.href = "premium/tools.html";
 }
 else{
-    // नहीं है → premium page
     window.location.href = "pages/premium.html";
 }
 
