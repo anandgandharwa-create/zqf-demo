@@ -1112,7 +1112,10 @@ Return to your original state
 </div>
 
 </div>
-
+<div onclick="localStorage.setItem('premium','yes')" 
+style="background:green;padding:10px;margin:10px;border-radius:10px;">
+Activate Premium (Test)
+</div>
 
 <!-- DAILY KRISHNA MESSAGE -->
 
@@ -1650,10 +1653,12 @@ if ('serviceWorker' in navigator) {
   <script>
 function goPremium(){
 
+// अगर user premium है
 if(localStorage.getItem("premium") === "yes"){
     window.location.href = "premium/tools.html";
 }
 else{
+    alert("यह Premium Feature है");
     window.location.href = "pages/premium.html";
 }
 
