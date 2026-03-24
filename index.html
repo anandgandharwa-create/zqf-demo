@@ -1090,7 +1090,7 @@ z-index:9998;
 <a href="#" class="disabledMenu">📚 Course (Coming Soon)</a>
 <a href="pages/meditation.html">🧘 Meditation</a>
 <a href="pages/mindgym.html">🏋️ Mind Gym</a>
-<a href="pages/premium.html">💰 Premium</a>
+<a href="#" onclick="goPremium()">💰 Premium</a>
 <a href="#" onclick="openPage('about','About')">ℹ️ About</a>
 <a href="pages/privacy.html">🔒 Privacy Policy</a>
 
@@ -1632,7 +1632,7 @@ function krishnaOracle(){
     "मौन में जाओ - वहीं सत्य स्पष्ट होता है।",
     "अहंकार छोड़ते ही मार्ग खुलने लगता है।",
     "जहाँ प्रेम है, वहीं कृष्ण का मार्ग है।",
-    "चिंता छोड़ो — जीवन तुम्हें सही दिशा दे रहा है।"
+    "चिंता छोड़ो - जीवन तुम्हें सही दिशा दे रहा है।"
   ];
 
   const randomMessage = messages[Math.floor(Math.random()*messages.length)];
@@ -1648,6 +1648,19 @@ if ('serviceWorker' in navigator) {
 }
   function goPremium(){
    window.location.href = "pages/premium.html";
+}
+  <script>
+function goPremium(){
+
+// अगर already premium है → tools page खोलो
+if(localStorage.getItem("premium") === "yes"){
+    window.location.href = "pages/premium/tools.html";
+}
+else{
+    // नहीं है → premium page
+    window.location.href = "pages/premium.html";
+}
+
 }
 </script>
 </body>
