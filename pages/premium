@@ -153,7 +153,17 @@ function openCourse(){
 function goBack(){
     window.location.href = "../index.html";
 }
+function openKrishna(){
+    window.location.href = "prashn.html";
+}
 
+function openMeditation(){
+    window.location.href = "meditation.html";
+}
+
+function openCourse(){
+    window.location.href = "gyan-game.html";
+}
 </script>
 
 </body>
