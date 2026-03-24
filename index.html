@@ -1639,26 +1639,15 @@ function krishnaOracle(){
   document.getElementById("oracleResult").innerText = randomMessage;
 }
 </script>
- <script>
+<script>
+/* Service Worker */
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('service-worker.js').then(reg => {
-    reg.update(); // हर बार update check
+    reg.update();
   });
 }
 
-  <script>
-function goPremium(){
-
-if(localStorage.getItem("premium") === "yes"){
-    window.location.href = "pages/premium.html";   // ✅ यही सही है
-}
-else{
-    alert("यह Premium Feature है");
-    window.location.href = "pages/premium.html";
-}
-
-}
-  <script>
+/* Premium Navigation */
 function goPremium(){
     window.location.href = "pages/premium.html";
 }
