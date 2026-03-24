@@ -3,58 +3,52 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Premium Tools</title>
 
 <style>
 body{
 margin:0;
 font-family:sans-serif;
-background:linear-gradient(180deg,#000,#021414);
+background:#071826;
 color:#fff;
 text-align:center;
 }
 
-/* Container */
 .container{
-max-width:500px;
+max-width:400px;
 margin:auto;
 padding:20px;
 }
 
-/* Title */
 .title{
 font-size:22px;
 margin-bottom:10px;
 }
 
-/* Card */
 .card{
-background:#0b1c1c;
-padding:20px;
+background:#0f2233;
+padding:15px;
 border-radius:15px;
 margin-top:20px;
 }
 
-/* Tool Button */
 .tool{
-background:#132c2c;
 padding:14px;
-border-radius:12px;
-margin-top:10px;
+margin:10px 0;
+border-radius:10px;
+background:#1e293b;
 cursor:pointer;
-font-size:15px;
 }
 
 .tool:hover{
-background:#1f4444;
+background:#334155;
 }
 
-/* Back */
 .back{
 margin-top:20px;
-font-size:14px;
-color:#aaa;
+padding:12px;
+background:#444;
+border-radius:10px;
 cursor:pointer;
 }
 </style>
@@ -78,30 +72,30 @@ cursor:pointer;
 <div class="tool" onclick="openTool('tool7.html')">🧠 Thought Converter</div>
 <div class="tool" onclick="openTool('tool8.html')">🎯 Focus Booster</div>
 <div class="tool" onclick="openTool('tool9.html')">🔥 Karma Insight</div>
-<div class="tool" onclick="openTool('tool10.html')">🌌 Divine Timing</div>
+<div class="tool" onclick="openTool('tool10.html')">💎 Divine Timing</div>
 
 </div>
 
-<div class="back" onclick="goBack()">⬅ Back to Home</div>
+<div class="back" onclick="goBack()">← Back to Home</div>
 
 </div>
 
 <script>
 
-/* Premium Check */
-if(!localStorage.getItem("premium")){
-alert("यह Premium Feature है");
-window.location.href = "../premium.html";
+/* ✅ Premium Check */
+if(localStorage.getItem("premium") !== "yes"){
+    alert("यह Premium Feature है");
+    window.location.href = "../pages/premium.html";
 }
 
-/* Open Tool */
+/* ✅ Open Tool */
 function openTool(page){
-window.location.href = page;
+    window.location.href = page;
 }
 
-/* Back */
+/* ✅ Back */
 function goBack(){
-window.location.href = "../index.html";
+    window.location.href = "../index.html";
 }
 
 </script>
