@@ -1649,9 +1649,8 @@ if ('serviceWorker' in navigator) {
   <script>
 function goPremium(){
 
-// अगर user premium है
 if(localStorage.getItem("premium") === "yes"){
-    window.location.href = "premium/tools.html";
+    window.location.href = "pages/premium.html";   // ✅ यही सही है
 }
 else{
     alert("यह Premium Feature है");
