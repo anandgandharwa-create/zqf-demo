@@ -204,14 +204,12 @@ transition:stroke-dashoffset 1s linear;
 
 </div>
 
-<div class="card locked">
-<div class="lockLabel">🔒 Premium</div>
+<div class="card" onclick="openThoughtShift()">
 <h3>🔁 Thought Shift</h3>
 <p>विचार बदलने की कला</p>
 </div>
 
-<div class="card locked">
-<div class="lockLabel">🔒 Premium</div>
+<div class="card" onclick="openAwareness()">
 <h3>👁 Awareness Drill</h3>
 <p>साक्षी भाव अभ्यास</p>
 </div>
@@ -314,6 +312,17 @@ clearInterval(progressInterval);
 }
 
 },1000);
+}
+  <script>
+
+function openThoughtShift(){
+alert("Thought Shift खोल रहा है...");
+window.location.href = "thought.html";
+}
+
+function openAwareness(){
+alert("Awareness Drill खोल रहा है...");
+window.location.href = "awareness.html";
 }
 </script>
 
