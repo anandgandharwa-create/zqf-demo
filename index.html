@@ -1112,6 +1112,10 @@ Return to your original state
 </div>
 
 </div>
+<div style="text-align:center;margin-bottom:10px;">
+  <div id="streakBox">🔥 Streak: 0 days</div>
+  <div id="todayMsg" style="color:#ccc;font-size:13px;"></div>
+</div>
 
 <!-- DAILY KRISHNA MESSAGE -->
 
@@ -1670,6 +1674,57 @@ function rateApp(){
 
 function closePopup(){
   document.getElementById("ratingPopup").style.display = "none";
+}
+ <script>
+
+// ===== STREAK SYSTEM =====
+let streak = localStorage.getItem("streak") || 0;
+let lastVisit = localStorage.getItem("lastVisit");
+
+let today = new Date().toDateString();
+
+if(lastVisit !== today){
+
+  let yesterday = new Date();
+  yesterday.setDate(yesterday.getDate()-1);
+
+  if(lastVisit === yesterday.toDateString()){
+    streak++;
+  }else{
+    streak = 1;
+  }
+
+  localStorage.setItem("streak", streak);
+  localStorage.setItem("lastVisit", today);
+}
+
+// ===== STREAK ICON =====
+let icon = "🌱";
+if(streak >= 5) icon = "🔥";
+if(streak >= 21) icon = "🌟";
+
+document.getElementById("streakBox").innerText =
+  `${icon} Streak: ${streak} days`;
+
+// ===== DAILY MESSAGE =====
+const msgs = [
+"आज खुद को सुनें, दुनिया को नहीं।",
+"आज 3 मिनट मौन में बैठें।",
+"आज प्रतिक्रिया नहीं, जागरूकता चुनें।",
+"आज अपने विचारों को देखें।",
+"आज कुछ छोड़ दें, शांति पाएँ।",
+"आज वर्तमान में रहें।"
+];
+
+let i = new Date().getDate() % msgs.length;
+document.getElementById("todayMsg").innerText = msgs[i];
+
+// ===== REWARD =====
+if(streak === 3){
+  alert("🔥 3 दिन लगातार! आप आगे बढ़ रहे हैं");
+}
+if(streak === 7){
+  alert("🌟 7 दिन! अब बदलाव शुरू हो चुका है");
 }
 </script>
 </script>
