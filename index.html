@@ -1651,6 +1651,38 @@ if ('serviceWorker' in navigator) {
 function goPremium(){
     window.location.href = "pages/premium.html";
 }
+ <script>
+// ⭐ Rating Logic
+let openCount = parseInt(localStorage.getItem("openCount")) || 0;
+openCount++;
+localStorage.setItem("openCount", openCount);
+
+if(openCount >= 3 && !localStorage.getItem("rated")){
+  setTimeout(() => {
+    document.getElementById("ratingPopup").style.display = "block";
+  }, 3000);
+}
+
+function rateApp(){
+  localStorage.setItem("rated", "yes");
+  window.open("https://play.google.com/store/apps/details?id=com.niotron.anandgandharwa.MindOS", "_blank");
+}
+
+function closePopup(){
+  document.getElementById("ratingPopup").style.display = "none";
+}
 </script>
+</script>
+ <!-- ⭐ Rating Popup -->
+<div id="ratingPopup" style="display:none; position:fixed; bottom:20px; left:10px; right:10px; background:#111; color:#fff; padding:15px; border-radius:10px; text-align:center; z-index:9999;">
+
+  <p>⭐ क्या आपको यह app पसंद आ रहा है?</p>
+  <p style="font-size:14px;">अगर शांति मिली हो तो rating जरूर दें 🙏</p>
+
+  <button onclick="rateApp()" style="background:#FFD700; border:none; padding:8px 15px; border-radius:5px; margin:5px;">⭐ Rate Now</button>
+
+  <button onclick="closePopup()" style="background:#333; color:#fff; border:none; padding:8px 15px; border-radius:5px; margin:5px;">Later</button>
+
+</div>
 </body>
 </html>
