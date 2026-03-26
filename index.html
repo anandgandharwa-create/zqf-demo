@@ -1739,5 +1739,43 @@ if(streak === 7){
   <button onclick="closePopup()" style="background:#333; color:#fff; border:none; padding:8px 15px; border-radius:5px; margin:5px;">Later</button>
 
 </div>
+ <div id="rewardPopup" style="
+display:none;
+position:fixed;
+top:0;left:0;
+width:100%;height:100%;
+background:rgba(0,0,0,0.7);
+justify-content:center;
+align-items:center;
+z-index:999;
+">
+
+<div style="
+background:#002626;
+padding:25px;
+border-radius:15px;
+text-align:center;
+max-width:300px;
+box-shadow:0 0 20px rgba(0,255,200,0.3);
+">
+
+<h2 style="color:#00ffcc;">🌟 7 Day Streak!</h2>
+
+<p>आप 7 दिन से लगातार जुड़े हैं 🙏<br>
+अब आपका मन स्थिर हो रहा है</p>
+
+<button onclick="closeReward()" style="
+margin-top:10px;
+padding:10px 20px;
+border:none;
+border-radius:10px;
+background:#00cc99;
+font-weight:bold;
+">
+धन्यवाद
+</button>
+
+</div>
+</div>
 </body>
 </html>
