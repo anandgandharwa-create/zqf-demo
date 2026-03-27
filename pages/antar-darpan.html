@@ -295,7 +295,7 @@ function startSpin(){
    document.getElementById("spinText").style.display = "block";
   wheel.style.animation = "none";
   currentRotation += 900;
-wheel.style.transition = "transform 7s cubic-bezier(.2,.8,.2,1)";
+wheel.style.transition = "transform 7s cubic-bezier(.3,.7,.4,1)";
   wheel.style.transform = "rotate(" + currentRotation + "deg)";
 
   setTimeout(()=>{ goResult(); },7000);
