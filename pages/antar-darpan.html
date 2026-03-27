@@ -294,8 +294,8 @@ function startSpin(){
  const wheel = document.getElementById("wheel");
    document.getElementById("spinText").style.display = "block";
   wheel.style.animation = "none";
-  currentRotation += 2500;
- wheel.style.transition = "transform 7s cubic-bezier(.1,.7,.2,1)";
+  currentRotation += 1200;
+wheel.style.transition = "transform 7s cubic-bezier(.2,.8,.2,1)";
   wheel.style.transform = "rotate(" + currentRotation + "deg)";
 
   setTimeout(()=>{ goResult(); },7000);
