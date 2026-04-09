@@ -8,8 +8,8 @@
 <meta http-equiv="Expires" content="0">
 <title>Zero Quantum Frequency™</title>
 <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#ffffff">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#5b2c83">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <style>
 html, body{
 margin:0;
@@ -19,10 +19,15 @@ overflow-x:hidden;
 }
 
 body{
-  background:#071826;
-  color:white;
-  font-family:sans-serif;
-  text-align:center;
+font-family:system-ui;
+background:#071826;
+color:#f1e2a6;
+text-align:center;
+
+/* 👇 ये add करो */
+-webkit-user-select: none;
+-webkit-touch-callout: none;
+user-select: none;
 }
 header{
 position:sticky;
@@ -41,11 +46,16 @@ z-index:1000;
 box-shadow:0 4px 20px rgba(0,0,0,0.4);
 }
 .container{
-  max-width:400px;
-  margin:auto;
-  padding:20px;
+padding:25px 20px;
+max-width:420px;
+margin:auto;
+min-height:100vh;
+position:relative;
+display:flex;
+flex-direction:column;
+align-items:center;
+box-sizing:border-box;
 }
-
 .longtext{
 color:#ffffff;
 line-height:1.9;
@@ -327,13 +337,21 @@ max-width:380px;
 margin:12px auto;
 font-style:normal;   /* 👈 italic हट गया */
 }
-.tagline{
-color:#ffffff;      /* white */
-font-weight:normal; /* bold हट गया */
-font-style:italic;  /* italic रहेगा */
-font-size:20px;
-margin-top:18px;
-letter-spacing:0.5px;
+.homeTop .tagline{
+margin-top:12px;
+
+font-size:22px;
+font-weight:600;
+font-style:italic;
+
+background:linear-gradient(45deg,#ffd700,#ffb300);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+
+letter-spacing:0.6px;
+line-height:1.6;
+
+text-shadow:0 0 10px rgba(255,215,0,0.3);
 }
   .courseHighlight{
 color:#ffd700;        /* Yellow */
@@ -351,7 +369,7 @@ padding:16px 14px;
 
 color:#00ffd5;
 font-size:18px;
-line-height:1.8;
+line-height:1.6;
 text-align:center;
 
 max-width:380px;
@@ -495,9 +513,8 @@ margin-bottom:10px;
 
 .dailyText{
 font-size:15px;
-line-height:1.6;
+line-height:1.5;
 color:#d5e6f2;
-margin-top:15px;
 margin-bottom:14px;
 }
 
@@ -523,31 +540,51 @@ margin-top:10px;
 }
 
 .menuCard{
-background:linear-gradient(145deg,#132532,#0a1823);
-border-radius:20px;
-padding:24px 12px;
-font-size:16px;
-color:#fff;
-cursor:pointer;
-transition:0.25s;
-font-weight:600;
+  position: relative;
+  overflow: hidden;
 
-box-shadow:
-0 10px 25px rgba(0,0,0,0.6),
-inset 0 0 10px rgba(255,255,255,0.03);
+  background: linear-gradient(145deg,#132532,#0a1823);
+  border-radius:20px;
+  padding:24px 12px;
+  font-size:16px;
+  color:#fff;
+  cursor:pointer;
+  transition:0.25s;
+  font-weight:600;
 
-text-align:center;
+  /* 🔥 NO BLINK / NO GLOW */
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+
+  text-align:center;
 }
+
+/* simple hover (premium feel) */
+.menuCard:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.7);
+}
+ .menuGrid .menuCard{
+  animation: none !important;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5) !important;
+}
+
 /* ⭐ About page cards yellow */
 .aboutTopMenu .menuCard{
-background:linear-gradient(145deg,#fff7a8,#ffd84d);
-color:#000;
+  background:linear-gradient(145deg,#fff7a8,#ffd84d);
+  color:#000;
 
-box-shadow:
-0 10px 25px rgba(0,0,0,0.5),
-0 0 18px rgba(255,215,0,0.35);
+  box-shadow:
+  0 10px 25px rgba(0,0,0,0.5),
+  0 0 18px rgba(255,215,0,0.35);
+
+  /* 🔥 animation force OFF */
+  animation:none !important;
 }
 
+/* shine effect OFF */
+.menuCard::before{
+  display:none !important;
+}
 /* hover yellow cards */
 .aboutTopMenu .menuCard:hover{
 transform:translateY(-4px);
@@ -611,7 +648,7 @@ transform:scale(1.05);
 
 .answerButton{
 display:inline-block;
-margin-top:18px;
+margin-top:15px;
 background:#f59e0b;
 color:black;
 padding:14px 22px;
@@ -1047,39 +1084,80 @@ transform:translateY(-5px);
 box-shadow:
 0 0 30px rgba(255,215,0,0.6);
 }
- .premiumBox{
-margin-top:15px;
-padding:12px;
-border-radius:12px;
-background:linear-gradient(135deg,#f5d06f,#caa84c);
-color:#000;
-font-weight:bold;
-cursor:pointer;
-text-align:center;
-}
- .premiumBox{
-animation: pulse 2s infinite;
- margin-bottom:15px;
+ .askBox{
+  margin: 20px 0 25px 0;   /* ऊपर-नीचे space */
+  padding: 12px;
+  border-radius: 18px;
+  background: rgba(0, 255, 200, 0.05);
+  border: 1px solid rgba(0,255,200,0.2);
+  backdrop-filter: blur(10px);
+  text-align: center;
 }
 
-@keyframes pulse{
-0%{transform:scale(1);}
-50%{transform:scale(1.03);}
-100%{transform:scale(1);}
-}
-.menuTitle{
-  font-size:18px;
-  font-weight:bold;
-  margin-bottom:6px;
-  color:#FFD700; /* Golden */
-  text-shadow: 0 0 8px rgba(255,215,0,0.6);
+@keyframes yellowBlink {
+  0% {
+    box-shadow:
+      0 0 10px rgba(255,215,0,0.5),
+      0 0 20px rgba(255,215,0,0.3);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow:
+      0 0 25px rgba(255,215,0,1),
+      0 0 50px rgba(255,215,0,0.7);
+    transform: scale(1.06);
+  }
+  100% {
+    box-shadow:
+      0 0 10px rgba(255,215,0,0.5),
+      0 0 20px rgba(255,215,0,0.3);
+    transform: scale(1);
+  }
 }
 
-.menuDesc{
-  font-size:13px;
-  opacity:0.9;
-  line-height:1.4;
-  color:#FFD700; /* Golden */
+.askQuestionBtn{
+  display:inline-block;
+  padding:12px 26px;
+
+  background:linear-gradient(135deg,#ffd700,#ffb300);
+  color:#1a1a1a;
+
+  border-radius:40px;
+  font-weight:600;
+  font-size:14px;
+
+  border:1px solid rgba(255,215,0,0.7);
+
+  cursor:pointer;
+}
+
+/* hover (blink के ऊपर extra boost) */
+.askQuestionBtn:hover{
+  transform: scale(1.1);
+}
+
+.askWrap{
+  width:100%;
+  display:flex;
+  justify-content:center;
+  margin:20px 0 25px 0;
+}
+ .audioBtn {
+  background: linear-gradient(135deg, #6a5cff, #00c6ff);
+  color: #fff;
+  font-weight: 600;
+  text-align: center;
+  padding: 14px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  margin-top: 12px;
+  box-shadow: 0 0 20px rgba(106, 92, 255, 0.7);
+  transition: 0.3s;
+}
+
+.audioBtn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(0, 198, 255, 0.9);
 }
 </style>
 </head>
@@ -1089,7 +1167,7 @@ animation: pulse 2s infinite;
 <header id="titleBar">
   <span class="menu-icon" onclick="toggleMenu()">☰</span>
   <span id="backBtn" onclick="goHome()">←</span>
-  <span id="title">Home</span>
+ <span id="title">Zero Quantum Frequency™</span>
 </header>
 <div id="overlay" onclick="closeMenu()" 
 style="
@@ -1112,7 +1190,6 @@ z-index:9998;
 <a href="#" class="disabledMenu">📚 Course (Coming Soon)</a>
 <a href="pages/meditation.html">🧘 Meditation</a>
 <a href="pages/mindgym.html">🏋️ Mind Gym</a>
-<a href="pages/premium.html">💰 Premium</a>
 <a href="#" onclick="openPage('about','About')">ℹ️ About</a>
 <a href="pages/privacy.html">🔒 Privacy Policy</a>
 
@@ -1121,55 +1198,66 @@ z-index:9998;
 <!-- HOME -->
 <div id="home" class="container page active">
 
-<!-- ⚡ HOOK -->
 <div class="homeTop">
-  <div class="heroText">
-    ⚡ क्या आप अपने मन को नियंत्रित करते हैं
-    <br> या मन आपको?
-  </div>
+
+<div class="tagline">
+आप अपने मूल स्वरूप में लौट रहे हैं
 </div>
-
-<!-- 🔮 MAIN ACTION (HERO FEATURE) -->
-<div class="premiumCard">
-
-  <div class="premiumTitle">🌿 आज का विचार</div>
-
-  <div class="quoteText">
-   “डर हमेशा भविष्य में रहता है,
-और शक्ति हमेशा वर्तमान में।
-जो अभी में जीता है, वही विजेता बनता है।”
-  </div>
+<div class="tagline">
+Return to your original state
+</div>
 
 </div>
 
-<!-- 🎮 SECOND ACTION -->
-<div class="premiumCard">
 
-<div class="dailyTitle">🔥 आज का सत्य</div>
+<!-- DAILY KRISHNA MESSAGE -->
+
+<div class="dailyCard">
+
+<div class="dailyTitle">🔮 आज का रहस्य </div>
 
 <div class="dailyText">
 “लोग किस्मत बदलने के पीछे भागते हैं
-और समझदार लो अपनी ‘सोच’ बदल देते हैं।
+और समझदार लोग अपनी ‘सोच’ बदल देते हैं।
 क्योंकि वही असली game changer है।”
 </div>
 
-<div class="dailyBtn" onclick="location.href='audio/audio5.mp3'">
-🎧 ज्ञान सुनें
-</div>
-<!-- 🧠 SINGLE MAIN BUTTON -->
-<div class="mainAction" onclick="location.href='pages/mann-ke-prashn.html'">
-  ✨ अभी जानें - आपका मन क्या कह रहा है
+
 </div>
 
-<!-- 🏆 PROGRESS (BOTTOM) -->
-<div class="progressBox">
-  🏆 Level: <b id="level">1</b> &nbsp; | &nbsp;
-  🔥 Day: <b id="streak">0</b>
+
+<!-- 🔮 ASK QUESTION BUTTON (NEW) -->
+
+<div class="askWrap">
+  <div class="askQuestionBtn" onclick="location.href='pages/mann-ke-prashn.html'">
+   ➤ अपने मन का उत्तर अभी जानें
+  </div>
+</div>
+<!-- 🎧 आज का ऑडियो बटन -->
+
+<div class="askWrap">
+  <div class="askQuestionBtn" onclick="location.href='audio/audio5.mp3'">
+    🎧 आज की ऊर्जा सुनें
+  </div>
 </div>
 
-<!-- 🔔 SOFT RETENTION -->
-<div class="softFooter">
-  🔔 कल फिर आएं - नया अनुभव आपका इंतज़ार करेगा
+<!-- MAIN MENU -->
+
+<div class="menuGrid">
+
+<div class="menuCard highlight" onclick="openPage('courses','Divine Access')">
+<span class="menuIcon">✨</span>
+Divine Access
+</div>
+
+<div class="menuCard highlight" onclick="openPage('krishna','Krishna Code')">
+<span class="menuIcon">🕉</span>
+Krishna Code
+</div>
+</div>
+
+<div class="footer">
+© Zero Quantum Frequency™
 </div>
 
 </div>
@@ -1263,7 +1351,18 @@ SRINAGAR, J & K
 <div class="divineMenuSticky">
 
 <div class="divineTopScroll">
+<div class="divineCard bigCard" onclick="window.open('pages/mindos.html','_self')">
 
+<div class="divineIcon">🧠</div>
+
+<div class="divineTitle">Mind OS</div>
+
+<div class="divineInstruction">
+अपने मन का ऑपरेटिंग सिस्टम समझें<br>
+विचार, भावनाएँ और चेतना को री-प्रोग्राम करें
+</div>
+
+</div>
 <div class="divineCard bigCard" onclick="window.open('pages/maun-chakra.html','_self')">
 <div class="divineIcon">🌀</div>
 <div class="divineTitle">Maun Chakra</div>
@@ -1325,12 +1424,6 @@ SRINAGAR, J & K
 <div class="coursePromo">
 <div class="coursePromoTitle">Divine Access</div>
 
- <p>
-संदेह को भूखा रखो, निर्णय को खिलाओ, अनुशासन को भोजन दो।
-शांति को गहराई से समझोगे तभी ही शांत रह पाओगे;
-किसी अंधविश्वास से नहीं बल्कि जागरूकता से समझोगे। 
-इसे हमारे ऐप के माध्यम से समझने का प्रयास करें..
-</p>
 <p>
 हर अभ्यास आपको धीरे-धीरे उस बिंदु तक ले जाएगा
 जहाँ विचारों का भार हल्का होने लगता है
@@ -1340,30 +1433,7 @@ SRINAGAR, J & K
 <div class="courseClosing">
 Divine Access - क्योंकि सच्ची समृद्धि भीतर की शांति से प्रारंभ होती है।
 </div>
-<!-- KRISHNA ORACLE -->
-
-<div class="oracleCard">
-
-<div class="oracleIcon">🕉</div>
-
-<div class="oracleTitle">
-Krishna Oracle
-</div>
-
-<div class="oracleText">
-अपने मन में एक प्रश्न रखें और कृष्ण से मार्गदर्शन प्राप्त करें।
-</div>
-
-<button class="oracleBtn" onclick="krishnaOracle()">
-कृष्ण से उत्तर प्राप्त करें
-</button>
-
-<div id="oracleResult" class="oracleResult"></div>
-
-</div>
-</div>
- 
-<!-- ASK AGAIN BUTTON -->
+ <!-- ASK AGAIN BUTTON -->
 <div style="text-align:center;margin-top:30px;">
 <a onclick="openPrashn()" class="askButton">
 अपने भीतर के प्रश्न पूछें
@@ -1385,6 +1455,7 @@ Krishna Oracle
 </a>
 
 </div>
+</div>
 
 </div>  <!-- courses container close -->
 
@@ -1399,27 +1470,55 @@ Krishna Oracle
   गीता - ज्ञान
 </div>
 <p class="gitaShlok">
-🕉 त्यक्त्वा कर्मफलासङ्गं...<br>
-नित्यतृप्तो निराश्रयः... ॥4.20॥
+मां च योऽव्यभिचारेण भक्तियोगेन सेवते।<br>
+स गुणान्समतीत्यैतान्<br>
+ब्रह्मभूयाय कल्पते॥ 14.26॥
 </p>
 
 <p class="quote">
-जो व्यक्ति कर्म के फल की आसक्ति छोड़कर भीतर से सदा संतुष्ट और किसी बाहरी सहारे पर 
-निर्भर नहीं रहता, वह कर्म करते हुए भी वास्तव में कर्म में बँधता नहीं है।
+जो मनुष्य अविचलित भक्ति योग के द्वारा मेरी सेवा करता है, 
+वह इन तीनों गुणों (सत्त्व, रजस्, तमस्) से ऊपर उठकर ब्रह्मभाव को प्राप्त हो जाता है।
 </p>
 
 <div class="divider"></div>
 
 <div class="longtext">
 
-<p>गीता के इस श्लोक में कर्मयोग की अत्यन्त सूक्ष्म और गूढ़ स्थिति का वर्णन है। श्रीकृष्ण कहते हैं कि जो व्यक्ति कर्म के फल में आसक्ति का त्याग कर देता है, वह भीतर से नित्य तृप्त और किसी बाहरी आधार पर निर्भर नहीं रहता। उसकी संतुष्टि किसी उपलब्धि, प्रशंसा या परिणाम से नहीं, बल्कि अपने आत्मस्वरूप से उत्पन्न होती है।</p>
+<p>
+इस श्लोक में भगवान श्रीकृष्ण मानव जीवन के एक अत्यंत सूक्ष्म और गूढ़ सिद्धांत को प्रकट करते हैं। 
+वे बताते हैं कि सम्पूर्ण प्रकृति सत्त्व, रजस् और तमस् - इन तीन गुणों से संचालित होती है, 
+और सामान्य मनुष्य इन्हीं गुणों के प्रभाव में बंधा रहता है।
+</p>
 
-<p>ऐसा पुरुष कर्म करता हुआ भी वास्तव में कर्म में बँधता नहीं है। क्योंकि उसके कर्म के पीछे स्वार्थ, अहंकार या फल की आकांक्षा नहीं होती। वह केवल कर्तव्यबुद्धि और व्यापक कल्याण की भावना से कर्म करता है। इस कारण उसके कर्म उसे बंधन में नहीं डालते।</p>
+<p>
+सत्त्व ज्ञान और शांति देता है, रजस् क्रिया और इच्छाओं को उत्पन्न करता है, 
+और तमस् अज्ञान एवं जड़ता को बढ़ाता है। 
+किन्तु ये तीनों ही गुण आत्मा को संसार के बंधन में बांधे रखते हैं।
+</p>
 
-<p>यहाँ गीता यह स्पष्ट करती है कि समस्या कर्म में नहीं, बल्कि कर्म के फल के प्रति आसक्ति में है। जब मनुष्य फलासक्ति से मुक्त होकर कर्म करता है, तब वही कर्म योग बन जाता है। इस अवस्था में व्यक्ति बाह्य रूप से सक्रिय होते हुए भी भीतर से पूर्णतः मुक्त और निष्कर्म रहता है।</p>
+<p>
+भगवान यहाँ एक अद्भुत मार्ग बताते हैं - अव्यभिचारी भक्ति। 
+अर्थात ऐसी भक्ति जो बिना किसी स्वार्थ, बिना किसी विचलन और बिना किसी अन्य आश्रय के केवल परमात्मा में स्थित हो।
+ऐसी निष्कलुष भक्ति साधक को गुणों के पार ले जाती है।
+</p>
 
-<p><strong>गीता का संदेश:</strong><br>
-जो व्यक्ति कर्म के फल की आसक्ति छोड़कर कर्तव्यभाव से कर्म करता है, वही कर्म करते हुए भी वास्तव में मुक्त रहता है।</p>
+<p>
+जब साधक इन गुणों से ऊपर उठता है, तब वह न तो सुख-दुःख में उलझता है, 
+न ही कर्मों के बंधन में बंधता है। वह ब्रह्मभाव को प्राप्त करता है, 
+अर्थात अपने वास्तविक स्वरूप, शुद्ध चेतना और परम सत्य के साथ एकत्व का अनुभव करता है।
+</p>
+
+<p>
+यह श्लोक यह भी स्पष्ट करता है कि केवल ज्ञान या कर्म से नहीं, 
+बल्कि निष्काम और अटूट भक्ति से ही मनुष्य प्रकृति के बंधनों को पूर्णतः पार कर सकता है।
+</p>
+
+<p>
+<strong>गीता का संदेश:</strong><br>
+अटूट और निष्काम भक्ति ही वह मार्ग है जो मनुष्य को प्रकृति के गुणों से ऊपर उठाकर 
+ब्रह्म के साथ एकत्व की अवस्था तक पहुंचाती है।
+</p>
+
 <!-- Krishna YouTube Button -->
 <div style="text-align:center; margin-top:30px;">
 
@@ -1534,7 +1633,11 @@ function openPage(id, title){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById(id).classList.add('active');
 
+if(id === "home"){
+  document.getElementById('title').innerText = "Zero Quantum Frequency™";
+}else{
   document.getElementById('title').innerText = title;
+}
 
   const backBtn = document.getElementById("backBtn");
   const menuIcon = document.querySelector(".menu-icon");
@@ -1551,9 +1654,8 @@ function openPage(id, title){
   setTimeout(initGallery,300);
 }
 function goHome(){
-openPage('home','Home');
+openPage('home','Zero Quantum Frequency™');
 }
-
 function initGallery(){
 
 const imgs=document.querySelectorAll('.gallery img');
@@ -1604,6 +1706,7 @@ window.open("pages/prashn.html","_self");
 window.onload = function(){
 
   const activePage = document.querySelector('.page.active').id;
+ document.getElementById('title').innerText = "Zero Quantum Frequency™";
   const backBtn = document.getElementById("backBtn");
   const menuIcon = document.querySelector(".menu-icon");
 
@@ -1649,139 +1752,65 @@ function krishnaOracle(){
   document.getElementById("oracleResult").innerText = randomMessage;
 }
 </script>
-<script>
-/* Service Worker */
+ 
+  <script>
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('service-worker.js').then(reg => {
+
+    // हर बार update check
     reg.update();
+
+    // 🔥 NEW UPDATE DETECT
+    reg.onupdatefound = () => {
+      const newWorker = reg.installing;
+
+      newWorker.onstatechange = () => {
+        if (newWorker.state === 'installed') {
+
+          // अगर पुराना SW already चल रहा है
+         if (navigator.serviceWorker.controller) {
+
+    // 👇 यहीं डालो
+    document.getElementById("updatePopup").style.display = "block";
+
+    setInterval(() => {
+      document.getElementById("updatePopup").style.display = "block";
+    }, 15000);
+
+}
+
+          }
+        }
+      };
+    };
+
   });
 }
-
-/* Premium Navigation */
-function goPremium(){
-    window.location.href = "pages/premium.html";
-}
- <script>
-// ⭐ Rating Logic
-let openCount = parseInt(localStorage.getItem("openCount")) || 0;
-openCount++;
-localStorage.setItem("openCount", openCount);
-
-if(openCount >= 3 && !localStorage.getItem("rated")){
-  setTimeout(() => {
-    document.getElementById("ratingPopup").style.display = "block";
-  }, 3000);
-}
-
-function rateApp(){
-  localStorage.setItem("rated", "yes");
-  window.open("https://play.google.com/store/apps/details?id=com.niotron.anandgandharwa.MindOS", "_blank");
-}
-
-function closePopup(){
-  document.getElementById("ratingPopup").style.display = "none";
-}
- <script>
-
-// ===== STREAK SYSTEM =====
-let streak = localStorage.getItem("streak") || 0;
-let lastVisit = localStorage.getItem("lastVisit");
-
-let today = new Date().toDateString();
-
-if(lastVisit !== today){
-
-  let yesterday = new Date();
-  yesterday.setDate(yesterday.getDate()-1);
-
-  if(lastVisit === yesterday.toDateString()){
-    streak++;
-  }else{
-    streak = 1;
+  function updateApp(){
+  if (navigator.serviceWorker.controller) {
+    navigator.serviceWorker.controller.postMessage({action:'skipWaiting'});
   }
-
-  localStorage.setItem("streak", streak);
-  localStorage.setItem("lastVisit", today);
+  location.reload();
 }
-
-// ===== STREAK ICON =====
-let icon = "🌱";
-if(streak >= 5) icon = "🔥";
-if(streak >= 21) icon = "🌟";
-
-document.getElementById("streakBox").innerText =
-  `${icon} Streak: ${streak} days`;
-
-// ===== DAILY MESSAGE =====
-const msgs = [
-"आज खुद को सुनें, दुनिया को नहीं।",
-"आज 3 मिनट मौन में बैठें।",
-"आज प्रतिक्रिया नहीं, जागरूकता चुनें।",
-"आज अपने विचारों को देखें।",
-"आज कुछ छोड़ दें, शांति पाएँ।",
-"आज वर्तमान में रहें।"
-];
-
-let i = new Date().getDate() % msgs.length;
-document.getElementById("todayMsg").innerText = msgs[i];
-
-// ===== REWARD =====
-if(streak === 3){
-  alert("🔥 3 दिन लगातार! आप आगे बढ़ रहे हैं");
-}
-if(streak === 7){
-  alert("🌟 7 दिन! अब बदलाव शुरू हो चुका है");
+   function revealGyan(){
+  alert("आज का पूरा संदेश यहाँ दिखेगा 🔥");
 }
 </script>
-</script>
- <!-- ⭐ Rating Popup -->
-<div id="ratingPopup" style="display:none; position:fixed; bottom:20px; left:10px; right:10px; background:#111; color:#fff; padding:15px; border-radius:10px; text-align:center; z-index:9999;">
-
-  <p>⭐ क्या आपको यह app पसंद आ रहा है?</p>
-  <p style="font-size:14px;">अगर शांति मिली हो तो rating जरूर दें 🙏</p>
-
-  <button onclick="rateApp()" style="background:#FFD700; border:none; padding:8px 15px; border-radius:5px; margin:5px;">⭐ Rate Now</button>
-
-  <button onclick="closePopup()" style="background:#333; color:#fff; border:none; padding:8px 15px; border-radius:5px; margin:5px;">Later</button>
-
-</div>
- <div id="rewardPopup" style="
-display:none;
+<div id="updatePopup" style="
 position:fixed;
-top:0;left:0;
-width:100%;height:100%;
-background:rgba(0,0,0,0.7);
-justify-content:center;
-align-items:center;
-z-index:999;
-">
-
-<div style="
-background:#002626;
-padding:25px;
-border-radius:15px;
-text-align:center;
-max-width:300px;
-box-shadow:0 0 20px rgba(0,255,200,0.3);
-">
-
-<h2 style="color:#00ffcc;">🌟 7 Day Streak!</h2>
-
-<p>आप 7 दिन से लगातार जुड़े हैं 🙏<br>
-अब आपका मन स्थिर हो रहा है</p>
-
-<button onclick="closeReward()" style="
-margin-top:10px;
-padding:10px 20px;
-border:none;
+bottom:20px;
+left:50%;
+transform:translateX(-50%);
+background:#0b1d2a;
+color:#fff;
+padding:15px;
 border-radius:10px;
-background:#00cc99;
-font-weight:bold;
+display:none;
+z-index:9999;
+text-align:center;
 ">
-धन्यवाद
-</button>
-
-</div>
+🚀 New Update Available<br><br>
+<button onclick="updateApp()">Update Now</button>
 </div>
 </body>
 </html>
