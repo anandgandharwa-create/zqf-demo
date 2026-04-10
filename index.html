@@ -1272,7 +1272,6 @@ z-index:9998;
  <a href="#" onclick="openPage('courses','Divine Access')">✨ Divine Access</a>
 <a href="#" onclick="openPage('krishna','Krishna Code')" class="menuItem">
   📖 Krishna Code
-  <span class="menuSub">गीता का गुप्त ज्ञान</span>
 </a>
 <a href="pages/meditation.html">🧘 Meditation</a>
 <a href="pages/mindgym.html">🏋️ Mind Gym</a>
@@ -1305,11 +1304,17 @@ z-index:9998;
 <!-- 🔥 TODAY TRUTH -->
 <div class="infoCard">
   <div class="cardTitle">🔥 आज का रहस्य</div>
-  <div class="cardText">
-    “लोग किस्मत बदलने के पीछे भागते हैं,
-    और समझदार लोग अपनी सोच बदल देते हैं।
-    क्योंकि वही असली game changer है।”
-  </div>
+ <!-- AUDIO PLAYER -->
+<div style="margin-top:10px;">
+
+ <audio id="todayAudio">
+  <source src="audio/audio5.mp3" type="audio/mpeg">
+</audio>
+ <div class="audioBtn" id="audioBtn" onclick="playAudio()">
+  🎧 आज का रहस्य सुनें
+</div>
+
+</div>
 
   <!-- BUTTONS -->
   <div class="btnWrap">
@@ -1871,6 +1876,19 @@ if ('serviceWorker' in navigator) {
 }
    function revealGyan(){
   alert("आज का पूरा संदेश यहाँ दिखेगा 🔥");
+}
+   
+function playAudio(){
+  const audio = document.getElementById("todayAudio");
+  const btn = document.getElementById("audioBtn");
+
+  if(audio.paused){
+    audio.play();
+    btn.innerText = "⏸️ Pause करें";
+  } else {
+    audio.pause();
+    btn.innerText = "🎧 आज का रहस्य सुनें";
+  }
 }
 </script>
 <div id="updatePopup" style="
