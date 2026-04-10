@@ -1319,10 +1319,9 @@ z-index:9998;
  <!-- AUDIO PLAYER -->
 <div style="margin-top:10px;">
 
-<audio id="todayAudio">
+<audio id="todayAudio" preload="auto">
   <source src="audio/audio5.mp3" type="audio/mpeg">
 </audio>
-
 <div class="audioBtn" onclick="playAudio()">
   🎧 आज का रहस्य सुनें
 </div>
@@ -1333,7 +1332,7 @@ z-index:9998;
   <div class="btnWrap">
    <div class="mainBtn" onclick="location.href='pages/gyan-parakh.html'">
    ✨ अपने ज्ञान को परखें
-</div>>
+</div>
 
     <div class="mainBtn outline" onclick="location.href='pages/mann-ke-prashn.html'">
       ✨ अभी जानें - आपका मन क्या कह रहा है
@@ -1884,15 +1883,8 @@ if ('serviceWorker' in navigator) {
 function playAudio(){
   const audio = document.getElementById("todayAudio");
 
-  if (!audio) {
-    alert("Audio not found ❌");
-    return;
-  }
-
   if(audio.paused){
-    audio.play().catch(err => {
-      alert("Play blocked ⚠️ Click again");
-    });
+    audio.play();
   } else {
     audio.pause();
   }
