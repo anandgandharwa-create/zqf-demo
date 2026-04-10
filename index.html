@@ -1143,19 +1143,22 @@ box-shadow:
   margin:20px 0 25px 0;
 }
 .audioBtn {
-  background: linear-gradient(145deg, #00ff9c, #00cc7a);  /* 🌿 green */
-  color: #000;   /* ⚫ black text */
+  display: block;              /* 🔥 सबसे जरूरी fix */
+  width: 85%;
+  margin: 12px auto;           /* center align */
+  letter-spacing: 0.5px;
+  font-size: 15px;
+  background: linear-gradient(145deg, #00ff9c, #00cc7a);
+  color: #000;
 
   font-weight: 600;
   text-align: center;
   padding: 14px 20px;
   border-radius: 30px;
+
+  text-decoration: none;       /* ❌ underline हटाओ */
   cursor: pointer;
-  margin-top: 12px;
 
-  border: none;
-
-  /* 🌿 glow */
   box-shadow:
     0 0 12px rgba(0,255,150,0.6),
     0 0 25px rgba(0,255,150,0.5);
@@ -1163,10 +1166,8 @@ box-shadow:
   transition: 0.3s;
 }
 
-/* 🔥 hover effect */
 .audioBtn:hover {
   transform: scale(1.05);
-
   box-shadow:
     0 0 25px rgba(0,255,150,1),
     0 0 45px rgba(0,255,150,1);
@@ -1321,7 +1322,6 @@ z-index:9998;
 <a href="audio/audio5.mp3" target="_blank" class="audioBtn">
   🎧 आज का रहस्य सुनें
 </a>
-
 </div>
 
   <!-- BUTTONS -->
