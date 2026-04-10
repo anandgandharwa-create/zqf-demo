@@ -1143,34 +1143,27 @@ box-shadow:
   margin:20px 0 25px 0;
 }
 .audioBtn {
-  display: block;              /* 🔥 सबसे जरूरी fix */
+  display: block;
   width: 85%;
-  margin: 12px auto;           /* center align */
-  letter-spacing: 0.5px;
-  font-size: 15px;
+  margin: 12px auto;
+  margin-bottom:20px;
+
   background: linear-gradient(145deg, #00ff9c, #00cc7a);
   color: #000;
-  margin-bottom:20px;
+
   font-weight: 600;
   text-align: center;
   padding: 14px 20px;
   border-radius: 30px;
 
-  text-decoration: none;       /* ❌ underline हटाओ */
+  text-decoration: none;
   cursor: pointer;
 
-  box-shadow:
-    0 0 12px rgba(0,255,150,0.6),
-    0 0 25px rgba(0,255,150,0.5);
+  /* ❌ glow हटाया */
+  box-shadow: none;
 
-  transition: 0.3s;
-}
-
-.audioBtn:hover {
-  transform: scale(1.05);
-  box-shadow:
-    0 0 25px rgba(0,255,150,1),
-    0 0 45px rgba(0,255,150,1);
+  /* ❌ smooth but no effect */
+  transition: none;
 }
  /* 🔥 NEW HOME UI */
 
